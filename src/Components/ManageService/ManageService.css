@@ -1,0 +1,7 @@
+.manage{
+    border: 3px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}

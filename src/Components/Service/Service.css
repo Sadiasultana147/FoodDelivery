@@ -1,0 +1,17 @@
+.singlecard{
+    background-image: linear-gradient(pink, silver,grey, hotpink	); 
+
+    box-shadow: 3px 3px 3px 5px ;
+    
+}
+
+    .btn{
+        background-color:blueviolet;
+        padding:5px;
+        color:white
+    }
+
+    .btn1{
+        background-color: brown;
+        color: white;
+    }
