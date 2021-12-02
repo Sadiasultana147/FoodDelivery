@@ -13,7 +13,7 @@ const Home = () => {
         return <Spinner animation="border" variant="danger"></Spinner>
     }
     return (
-        <div className="bg">
+        <div className="bg overflow-hidden">
 
             <section>
                 <Banner></Banner>

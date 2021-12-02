@@ -1,96 +1,134 @@
 import React from 'react';
-import './Footer.css';
-import image1 from '../../Images/footerImage3.png';
-import image2 from '../../Images/footerImage1 .png';
-import image3 from '../../Images/footerImage4.png'
+import { NavLink } from 'react-router-dom';
 
+
+import './Footer.css'
 
 const Footer = () => {
 
 
-
     return (
-        <div >
-            <footer class="text-center text-white " style={{ backgroundColor: "#caced1" }}>
 
-                <div class="container ">
-
-                    <section class="">
+        <div className="overflow-hidden">
+            < footer class="footer-section">
+                <div class="container">
+                    <div class="footer-hr pt-5 pb-5">
                         <div class="row">
-                            <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
-                                <div  >
-                                    <div
-                                        class="bg-image hover-overlay m-0 p-0 ripple shadow-1-strong rounded"
-                                        data-ripple-color="light"
-                                    >
-                                        <img
-                                            src={image2} className="w-100 h-100" alt=""
-                                        />
-
+                            <div class="col-xl-4 col-md-4 mb-30">
+                                <div class="single-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div class="icon-text">
+                                        <h4>Find us</h4>
+                                        <span>Road-04, Rupnagar R/A, Mirpur, Dhaka</span>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
-                                <div
-                                    class="bg-image hover-overlay ripple shadow-1-strong rounded"
-                                    data-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://i.ibb.co/6n4tVyB/pexels-beqa-tefnadze-803290.jpg?fbclid=IwAR1pasmbN9lqzhzTcdihU9utVEgJln9NcGBSh3-0NAV0UkgyheQ0Lx1zA2Y"
-                                        class="w-100" alt=""
-                                    />
-
-                                    <div
-                                        class="mask"
-                                        style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-                                    ></div>
-
+                            <div class="col-xl-4 col-md-4 mb-30">
+                                <div class="single-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <div class="icon-text">
+                                        <h4>Call us</h4>
+                                        <span>01700000000</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
-                                <div
-                                    class="bg-image hover-overlay ripple shadow-1-strong rounded"
-                                    data-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://i.ibb.co/N7qBMqz/pexels-lumn-1410236.jpg?fbclid=IwAR2TraPigzGsIG_Vt5Eq4Wy1MKFbaA0eSbeA8k3X4ZZ9gp-3xIYW2dwyJNw"
-                                        className="w-100" alt=""
-                                    />
-
-                                    <div
-                                        class="mask"
-                                        style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-                                    ></div>
-
+                            <div class="col-xl-4 col-md-4 mb-30">
+                                <div class="single-icon">
+                                    <i class="far fa-envelope-open"></i>
+                                    <div class="icon-text">
+                                        <h4>Mail us</h4>
+                                        <span>foodexpress@info.com</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-lg-2 p-0 m-0 col-md-12 ">
-                                <div
-                                    class="bg-image hover-overlay m-0 p-0 ripple shadow-1-strong rounded"
-                                    data-ripple-color="light"
-                                >
-                                    <img
-                                        src={image3} className="w-100 h-100" alt=""
-                                    />
-
-                                </div>
-                            </div>
-
                         </div>
-                    </section>
+                    </div>
+                    <div class="footer-content pt-5 pb-5">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 mb-50">
+                                <div class="footer-widget">
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="https://as2.ftcdn.net/v2/jpg/02/25/44/19/500_F_225441936_uPpKIUGClT8u9PeQk2vJz9QI1Vp3UIxE.jpg" class="img-fluid" alt="logo" /></a>
+                                    </div>
+                                    <div class="footer-text">
+                                        <p>At Food Express, the country’s most talented engineers, architects, and thought leaders are re shaping the future of real estate development. And we’re looking for people to join the team who are lateral thinkers, and will add value to our business and processes; and have excellent teamwork spirit.
+                                        </p>
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                                <div class="footer-link">
+                                    <div class="footer-link-heading">
+                                        <h3>Useful Links</h3>
+                                    </div>
+                                    <ul>
+                                        <li> <NavLink to="/home" >Home</NavLink></li>
+                                        <li> <NavLink to="/about" >About</NavLink></li>
+                                        <li>  <NavLink to="/explore" > Projects</NavLink></li>
+
+                                        <li> <NavLink to="/#" > Contact</NavLink></li>
+
+
+                                        <li> <NavLink to="/#" > Expert Team</NavLink></li>
+
+                                        <li> <NavLink to="/explore" > Latest News</NavLink></li>
+                                    </ul>
+                                    <br />
+                                    <br />
+                                    <div class="footer-social-icon">
+                                        <span>Follow us</span>
+                                        <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                        <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-heading">
+                                        <h3>Subscribe</h3>
+                                    </div>
+                                    <div class="footer-text mb-25">
+                                        <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                                    </div>
+                                    <div class="subscribe-form">
+                                        <form action="#">
+                                            <input type="text" placeholder="Email Address" />
+                                            <button><i class="fab fa-telegram-plane"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
-
-                <div class="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-                    <h1>FOOD EXPRESS</h1>
+                <div class="copyright-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                                <div class="copyright-text">
+                                    <p>Copyright &copy; 2021, Dream Kingdom <NavLink to="/home" > Profile</NavLink></p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li> <NavLink to="/home" > Projects</NavLink></li>
+                                        <li> <NavLink to="/#" > Terms</NavLink></li>
+                                        <li> <NavLink to="/#" > Privacy</NavLink></li>
+                                        <li> <NavLink to="/#" > Policy</NavLink></li>
+                                        <li> <NavLink to="/#" > Contact</NavLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </footer>
+            </footer >
         </div>
     );
 };
 
 export default Footer;
+

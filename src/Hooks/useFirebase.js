@@ -8,7 +8,8 @@ initializeAuthentication();
 const useFirebase = () => {
 
     const [user, setUser] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
+    const [isAdmin, setIsAdmin] = useState('');
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider()
 
@@ -35,7 +36,7 @@ const useFirebase = () => {
     }
 
 
-    const createAccountWithGoogle = (email, password) => {
+    const createAccountWithEmailPassword = (email, password) => {
 
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -69,16 +70,29 @@ const useFirebase = () => {
         })
             .finally(() => setIsLoading(false));
     }
+    const hanldeUserInfoRegister = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://fast-sea-86370.herokuapp.com/addUserInfo', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
     return {
         user, setUser,
         signInWithGoogle,
-        createAccountWithGoogle,
+        createAccountWithEmailPassword,
         loginWithEmailAndPassword,
         isLoading,
         setIsLoading,
         logOut,
-        updateName
+        updateName,
+        hanldeUserInfoRegister,
+        isAdmin, setIsAdmin
 
     }
 }

@@ -16,9 +16,13 @@ import ManageAllorders from './Components/ManageAllOrders/ManageAllorders';
 import Partners from './Components/Partners/Partners';
 import Footer from './Components/Footer/Footer';
 import About from './Components/About/About';
-import ManageService from './Components/ManageService/ManageService';
+import ManageServices from './Components/ManageServices/ManageServices.js';
 
 import NotFound from './Components/NotFound/NotFound'
+import Dashboard from './Components/DashBoard/Dashboard';
+import Pay from './Components/Pay/Pay';
+import Review from './Components/ReView/Review';
+import MakeAdmin from './Components/MakeAdmin/MakeAdmin'
 
 function App() {
   return (
@@ -40,6 +44,12 @@ function App() {
             <PrivateRoute path="/add">
               <AddService></AddService>
             </PrivateRoute>
+            <PrivateRoute path="/review">
+              <Review></Review>
+            </PrivateRoute>
+            <PrivateRoute path="/makeadmin">
+              <MakeAdmin></MakeAdmin>
+            </PrivateRoute>
             <Route path="/service">
               <Services></Services>
             </Route>
@@ -55,9 +65,15 @@ function App() {
             <PrivateRoute path="/order/:_id">
               <Order></Order>
             </PrivateRoute>
-            <PrivateRoute path="/manageservice/:_id">
-              <ManageService></ManageService>
+            <PrivateRoute path="/pay">
+              <Pay></Pay>
             </PrivateRoute>
+            <Route path="/manageservice">
+              <ManageServices></ManageServices>
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard></Dashboard>
+            </Route>
 
             <Route path="/register">
               <Register></Register>

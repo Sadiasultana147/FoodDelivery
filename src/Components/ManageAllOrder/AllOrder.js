@@ -5,45 +5,9 @@ import './AllOrder.css'
 
 const AllOrder = (props) => {
 
-    const [allorders, setAllorders] = useState([]);
-
-
-
-
-    useEffect(() => {
-        fetch('https://fast-sea-86370.herokuapp.com/orders')
-            .then(res => res.json())
-            .then(data => setAllorders(data))
-    }, [allorders])
-
-    //DELETE ORDER
-
-    const handleDeleteOrders = id => {
-        const proceed = window.confirm('Confirm Your delete activity');
-        if (proceed) {
-            const url = `https://fast-sea-86370.herokuapp.com/orders/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('deleted successfully');
-                        const remainingOrders = allorders.filter(order => order._id !== id);
-                        setAllorders(remainingOrders);
-                    }
-                });
-
-
-
-        }
-        window.location.reload();
-    }
-
-
-
-
-    const { _id, serviceImage, userEmail, UserName, city, address, contact, serviceName } = props.allorder
+    const { _id, status, serviceImage, userEmail, UserName, city, address, contact, serviceName } = props.allorder
+    const { handleDeleteOrders } = props;
+    const { handleConfirm } = props;
 
     return (
 
@@ -62,8 +26,23 @@ const AllOrder = (props) => {
                     <Card.Text><h6>User's Address :{address}</h6></Card.Text>
                     <hr />
                     <Card.Text><h6>User's ContacNo : {contact}</h6></Card.Text>
+                    <Card.Text><h6> {status}</h6></Card.Text>
 
-                    <button className="btn" style={{ backgroundColor: "darkred" }} onClick={() => handleDeleteOrders(_id)}>DELETE</button>
+                    <div className="pb-5">
+                        <div>
+                            {
+                                status === "pending" &&
+                                < button onClick={() => handleConfirm(_id)} className="btn" style={{ backgroundColor: "indigo", color: "white" }} >Confirm</button>
+
+
+
+
+                            }
+                        </div>
+                        <br />
+                        <div  ><button onClick={() => handleDeleteOrders(_id)} className="btn" style={{ backgroundColor: "darkred", color: "white" }}>  <i style={{ color: "white" }} class="fa fa-trash"></i>
+                            <span className="ps-1" style={{ color: "white" }}>DELETE</span></button></div>
+                    </div>
 
 
 

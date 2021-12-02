@@ -1,60 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
-import './ManageService.css'
+import React from 'react';
+import { Card, Col } from 'react-bootstrap';
 
-const ManageService = () => {
-
-    const { _id } = useParams();
-
-
-    const [services, setService] = useState([]);
-    const history = useHistory();
-
-    useEffect(() => {
-        fetch(`https://fast-sea-86370.herokuapp.com/services/${_id}`)
-            .then(res => res.json())
-            .then(data => setService(data))
-    }, [])
-
-    const handleClick = () => {
-        history.push('/manageservices')
-    }
-
-    //DELETE ORDER
-
-    const handleDeleteService = id => {
-        const proceed = window.confirm('Delete Confirm');
-        if (proceed) {
-            const url = `https://fast-sea-86370.herokuapp.com/services/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('deleted successfully');
-                        const remainingServices = setService.filter(service => service._id !== id);
-                        setService(remainingServices);
-                    }
-                });
-
-
-
-        }
-        //window.location.reload();
-    }
+const ManageService = (props) => {
+    const { _id, name, image, description } = props.service;
+    const { handleDelete } = props;
     return (
-        <div className=" body">
+        <div>
+            <div  >
+                <Col className="h-100 ms-5 mb-5 " >
+                    <Card className="card singlecard  cardbox  " >
+                        <Card.Img variant="top" src={image} className=" mt-4 w-50  mx-auto d-block " />
+                        <Card.Body >
+                            <div >
+                                <Card.Title  >{name} </Card.Title>
 
-            <div className="manage w-25 ms-5 me-5   ">
-                <div className="pt-5 pb-5">
-                    <img className="w-50 " src={services.image} alt="" />
-                    <h2>{services.name}</h2>
-                    <h5>{services.description}</h5>
+                                <hr style={{ border: "2px solid blue" }} />
+                                <Card.Text style={{ color: "white" }} className="h-100">
+                                    <h6 style={{ color: "black", fontWeight: "30px", fontSize: "20px" }}>DETAILS:</h6>
+                                    {description}</Card.Text>
 
-                </div>
-                <button onClick={() => handleDeleteService(_id)}>DELETE</button>
+                                <hr style={{ border: "2px solid blue" }} />
 
+
+
+                            </div>
+
+                            <div><button onClick={() => handleDelete(_id)} className="btn" style={{ backgroundColor: "darkred", color: "white" }}>  <i style={{ color: "white" }} class="fa fa-trash"></i>
+                                <span className="ps-1" style={{ color: "white" }}>DELETE</span></button></div>
+
+
+
+
+
+
+
+
+
+                        </Card.Body>
+                    </Card>
+                </Col>
             </div>
         </div>
     );

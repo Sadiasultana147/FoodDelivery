@@ -3,7 +3,7 @@ import './Information.css'
 
 const Information = () => {
     return (
-        <div className="ms-5 me-5">
+        <div className="ms-5 me-5 overflow-hidden">
             <h1>WHY CHOOSE US?</h1>
             {/* OUR WORK */}
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pt-5 ">
@@ -61,7 +61,7 @@ const Information = () => {
                             <p>Download the Pathao App and order your food online to get the fastest delivery.</p>
                         </div>
                         <div class="col">
-                            <img style={{ width: "600px" }} src="https://images.deliveryhero.io/image/foodpanda/home-foodpanda-apps.png?width=1576&amp;height=1253|https://images.deliveryhero.io/image/foodpanda/home-foodpanda-apps.png?width=1576&amp;height=1253" alt="" />
+                            <img className="w-100" src="https://images.deliveryhero.io/image/foodpanda/home-foodpanda-apps.png?width=1576&amp;height=1253|https://images.deliveryhero.io/image/foodpanda/home-foodpanda-apps.png?width=1576&amp;height=1253" alt="" />
                         </div>
                     </div>
                 </div>

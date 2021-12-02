@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 const Register = () => {
 
 
-    const { signInWithGoogle, createAccountWithGoogle, setUser, setIsLoading, updateName } = useAuth();
+    const { error, setError, signInWithGoogle, hanldeUserInfoRegister, createAccountWithEmailPassword, setUser, setIsLoading, updateName } = useAuth();
 
     const history = useHistory()
     const location = useLocation()
@@ -19,17 +19,17 @@ const Register = () => {
 
 
     const handleGetName = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setName(e.target.value)
     }
 
     const handleGetEmail = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setEmail(e.target.value)
     }
 
     const handleGetPassword = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setPassword(e.target.value)
     }
 
@@ -37,16 +37,26 @@ const Register = () => {
 
     const handleRegistration = (e) => {
         e.preventDefault();
-        createAccountWithGoogle(email, password)
+        createAccountWithEmailPassword(email, password)
             .then((res) => {
+
                 setIsLoading(true)
                 updateName(name)
                 setUser(res.user)
+
+                hanldeUserInfoRegister(email, name, 'POST')
                 history.push(url)
+
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                if (password.length < 6) {
+                    setError("password must be six charecters");
+                    return;
+                }
+                else {
+                    setError("Already registered");
+                    return;
+                }
                 // ..
             })
             .finally(() => {
@@ -59,6 +69,8 @@ const Register = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then((res) => {
+                const user = res.user;
+                hanldeUserInfoRegister(user.email, user.displayName, 'PUT');
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
@@ -72,7 +84,7 @@ const Register = () => {
     return (
         <div>
 
-            <div className="body">
+            <div className="body overflow-hidden">
 
                 <h1 className="pt-5">Please Register</h1>
                 <div className=" d-flex justify-content-center mt-4 pt-5">
@@ -83,6 +95,7 @@ const Register = () => {
                         <input className="p-2 mt-3" type="email" onBlur={handleGetEmail} placeholder="email" />
                         <input className="p-2 mt-3" type="password" onBlur={handleGetPassword} placeholder="password" />
                         <input className="p-2 mt-3 " type="submit" value="REGISTER" />
+                        <div><h5 className="pt-3" style={{ color: "red", }}>{error}</h5></div>
                     </form>
                 </div>
                 <div className="pt-5">

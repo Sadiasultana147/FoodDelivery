@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth'
 
 const LogIn = () => {
-    const { signInWithGoogle, setUser, loginWithEmailAndPassword, setIsLoading } = useAuth();
+    const { hanldeUserInfoRegister, error, setError, signInWithGoogle, setUser, loginWithEmailAndPassword, setIsLoading } = useAuth();
 
     const history = useHistory()
     const location = useLocation()
@@ -38,8 +38,13 @@ const LogIn = () => {
                 // ...
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                if (error.code === "auth/user-not-found") {
+                    setError("Wrong Email")
+                }
+                else {
+                    setError("Wrong Password")
+
+                }
             })
             .finally(() => {
                 setIsLoading(false)
@@ -53,6 +58,8 @@ const LogIn = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then((res) => {
+                const user = res.user;
+                hanldeUserInfoRegister(user.email, user.displayName, 'PUT');
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
@@ -67,7 +74,7 @@ const LogIn = () => {
     return (
         <div >
 
-            <div className="body">
+            <div className="body overflow-hidden">
 
                 <h1 className="pt-5">Please! LogIn </h1>
                 <div className="d-flex justify-content-center  ">
@@ -77,6 +84,7 @@ const LogIn = () => {
                         <br />
                         <input className="p-2 mt-3" type="password" onBlur={handleGetPassword} placeholder="Password" />
                         <br />
+                        <div><h5 className="pt-3" style={{ color: "red", }}>{error}</h5></div>
                         <br />
                         <input className="p-2 mt-3 btn" type="submit" value="LOGIN" />
 

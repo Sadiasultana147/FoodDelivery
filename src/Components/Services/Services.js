@@ -13,12 +13,12 @@ const Services = () => {
 
 
     return (
-        <div className="mt-5 ">
+        <div className="mt-5 overflow-hidden ">
             <h1 className="mb-5">OUR SERVICES FOR YOU</h1>
 
             {
 
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 pt-5 ">
+                <div class="me-5 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 pt-5 ">
 
 
                     {

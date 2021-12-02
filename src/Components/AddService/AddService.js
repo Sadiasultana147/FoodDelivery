@@ -24,7 +24,7 @@ const AddService = () => {
             })
     };
     return (
-        <div className="body ">
+        <div className="body overflow-hidden ">
             <h1 className="pt-5">ADD NEW SERVICE</h1>
             <div className=" d-flex justify-content-center mt-4 pb-5 pt-5 ">
 
@@ -34,7 +34,7 @@ const AddService = () => {
                     <textarea {...register("description")} placeholder="description" className="p-2 mt-3" />
                     <input className="p-2 mt-3" type="text" {...register("image", { required: true })} placeholder="image url" />
                     <span>
-                        <input style={{ borderRadius: "10px" }} className="p-2 mt-3 w-25  ms-5 add  " type="submit" value="Add Service" />
+                        <input style={{ borderRadius: "10px" }} className="p-2 mt-3 w-100   add  " type="submit" value="Add Service" />
                     </span>
                 </form>
             </div>

@@ -38,10 +38,10 @@ const MyOrders = () => {
 
 
         }
-        //window.location.reload();
+
     }
     return (
-        <div className="body ">
+        <div className="body overflow-hidden ">
             <div>
                 <img className="w-100 h-2" src="https://pathao.com/wp-content/uploads/2018/12/04-Food-2-1.png" alt="" />
             </div>
@@ -50,11 +50,11 @@ const MyOrders = () => {
 
 
 
-            <Row xs={4} md={3} className="g-4 ">
+            <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-5 d-flex justify-content-center mb-5 pb-5  ">
                 {
                     myOrder.map(order => <div>
 
-                        <div className="box m-5 ">
+                        <div className="box m-5 h-100 ">
                             <img className="w-75 mt-2" src={order.serviceImage} alt="" />
                             <hr style={{ border: "2px solid blue" }} />
                             <h4> {order.serviceName}</h4>
@@ -63,12 +63,14 @@ const MyOrders = () => {
 
                             <hr style={{ border: "2px solid blue" }} />
 
+                            <h6>{order.status}</h6>
+
                             < button style={{ backgroundColor: "darkred" }} className="mb-4 btn " onClick={() => handleDeleteOrders(order._id)}> DELETE</button >
                         </div>
 
                     </div >)
                 }
-            </Row>
+            </div>
 
 
 

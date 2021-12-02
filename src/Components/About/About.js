@@ -2,9 +2,9 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div className="body overflow-hidden">
             <div>
-                <div className="body">
+                <div >
                     <img className="w-100" src="https://www.foodpanda.com/wp-content/uploads/2021/01/foodpanda-italian-blue-scaled.jpg" alt="" />
                     <h5 style={{ color: "gray" }} className="ms-5 me-5">
                         For us, it's not just about bringing you good food from your favourite restaurants. It's about making a connection, which is why we sit down with the chefs, dreaming up menus that will arrive fresh and full of flavour. Try us!

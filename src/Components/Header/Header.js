@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import './Header.css'
 
 
 const Header = () => {
@@ -17,6 +18,7 @@ const Header = () => {
                     </span>
                 </NavLink>
                 <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
@@ -29,13 +31,12 @@ const Header = () => {
                             <div className="navbar-nav ms-5 ps-5">
                                 <NavLink to="/home" className="nav-item nav-link active " style={{ color: "#d70f64", fontSize: "20px" }}>Home</NavLink>
                                 <NavLink to="/about" className="nav-item nav-link active " style={{ color: "#d70f64", fontSize: "20px" }}>About</NavLink>
-                                <NavLink to="/add" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>AddService</NavLink>
 
-                                <NavLink to="/partner" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>Partner</NavLink>
 
-                                <NavLink to="/myorder" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>MyOrder</NavLink>
+                                <NavLink to="/dashboard" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>Dashboard</NavLink>
 
-                                <NavLink to="/allorder" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>ManageAllOrder</NavLink>
+
+
 
 
                             </div>
@@ -45,10 +46,11 @@ const Header = () => {
                             <div className="navbar-nav ms-5 ps-5">
                                 <NavLink to="/home" className="nav-item nav-link active " style={{ color: "#d70f64", fontSize: "20px" }}>Home</NavLink>
                                 <NavLink to="/about" className="nav-item nav-link active " style={{ color: "#d70f64", fontSize: "20px" }}>About</NavLink>
-                                <NavLink to="/add" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>AddService</NavLink>
+
 
 
                                 <NavLink to="/partner" className="nav-item nav-link" style={{ color: "#d70f64", fontSize: "20px" }}>Partner</NavLink>
+
 
 
 

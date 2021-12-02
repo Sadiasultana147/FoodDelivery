@@ -4,7 +4,7 @@ import banner from '../../Images/banner.jpg'
 
 const Banner = () => {
     return (
-        <div>
+        <div className="overflow-hidden">
 
 
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

@@ -51,11 +51,14 @@ const Order = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Order Confirm');
+                    setService(data)
+                    alert('Successfully Purchased.')
+
                     e.target.reset();
                 }
-            })
+                history.push(url)
 
+            })
         e.preventDefault();
     }
 
@@ -65,7 +68,7 @@ const Order = () => {
 
 
     return (
-        <div>
+        <div className="overflow-hidden">
             <h1>Details of : {service?.name}</h1>
 
             <img src={service.image} alt="" />
