@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import AllOrder from '../ManageAllOrder/AllOrder';
 
@@ -18,26 +19,39 @@ const ManageAllorders = () => {
 
 
     const handleDeleteOrders = id => {
-        const proceed = window.confirm('Confirm Your delete activity');
-        if (proceed) {
-            const url = `https://fast-sea-86370.herokuapp.com/orders/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('deleted successfully');
-                        const remainingOrders = allorders.filter(order => order._id !== id);
-                        setAllorders(remainingOrders);
-                    }
-                });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const url = `https://fast-sea-86370.herokuapp.com/orders/${id}`;
+                fetch(url, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                            const remainingOrders = allorders.filter(order => order._id !== id);
+                            setAllorders(remainingOrders);
+                        }
+                    });
 
 
 
-        }
 
+            }
+
+        });
     }
+
+
+
 
     //Handle status
 

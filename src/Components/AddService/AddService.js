@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from 'react-router';
+import Swal from 'sweetalert2';
 import './AddService.css'
 
 
@@ -17,7 +18,16 @@ const AddService = () => {
         axios.post('https://fast-sea-86370.herokuapp.com/services', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert("inserted Succesfully");
+
+                    Swal.fire({
+                        title: "New Service Added Successfully",
+                        showClass: {
+                            popup: "animate__animated animate__fadeInDown",
+                        },
+                        hideClass: {
+                            popup: "animate__animated animate__fadeOutUp",
+                        },
+                    });
                     reset();
                 }
                 history.push(url)

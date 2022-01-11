@@ -29,6 +29,7 @@ const AllOrder = (props) => {
                     <Card.Text><h6> {status}</h6></Card.Text>
 
                     <div className="pb-5">
+                        {/* updated work */}
                         <div>
                             {
                                 status === "pending" &&
